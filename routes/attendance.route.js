@@ -47,6 +47,9 @@ route.get('/', verifiedAdminOrTeacher, (req, res) => {
         if(err) {
             res.statusCode = 400
             res.json({successs:false, error: err})
+        }else if(result == null){
+            res.statusCode = 404
+            res.json({success:false, error:"No data found"})
         }else {
             res.statusCode = 200
 

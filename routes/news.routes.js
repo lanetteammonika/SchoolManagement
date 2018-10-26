@@ -24,6 +24,9 @@ route.get('/', verifiedToken, (req, res) => {
         if(err){
             res.statusCode = 400
             res.json({success:false, error:err})
+        }else if(result == null){
+            res.statusCode = 404
+            res.json({success:false, error:"No data found"})
         }else {
             res.statusCode = 200
 
@@ -37,6 +40,9 @@ route.get('/:id', verifiedToken, (req, res) => {
         if(err){
             res.statusCode = 400
             res.json({success:false, error:err})
+        }else if(result == null){
+            res.statusCode = 404
+            res.json({success:false, error:"No data found"})
         }else {
             res.statusCode = 200
             res.json({success:true, response: result})

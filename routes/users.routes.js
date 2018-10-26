@@ -8,11 +8,9 @@ const {verifiedToken, verifiedRestrictStudent} = require('../middleware/verify_t
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        console.log("dest");
         cb(null, 'profilepic/')
     },
     filename: function (req, file, cb) {
-        console.log("Node");
         let extArray = file.originalname.split(".");
         let extension = extArray[extArray.length - 1];
         console.log(file);
@@ -23,7 +21,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 route.post('/',upload.single('profile_pic'),(req,res)=>{
-    console.log("Hi");
     insert(req.body,req.file.filename,(err,result)=>{
         if (err){
             res.statusCode=400;
@@ -32,7 +29,7 @@ route.post('/',upload.single('profile_pic'),(req,res)=>{
         }
         else if(result == null){
             res.statusCode=404;
-            res.json({sucess:false, error:"NOT VALID"});
+            res.json({success:false, error:"NOT VALID"});
             console.log("Not Valid");
         }
         else {
@@ -135,6 +132,9 @@ route.get('/userDetail', verifiedToken, (req, res) => {
         }else if (!user) {
             res.statusCode=404;
             res.json({success: false, error: 'User not found'});
+        }else if(result == null){
+            res.statusCode = 404
+            res.json({success:false, error:"No data found"})
         }else {
             res.statusCode = 200;
             delete user.dataValues.password;
@@ -168,6 +168,9 @@ route.get('/roleBasedUsers', verifiedRestrictStudent, (req, res) => {
         if(err){
             res.statusCode=400;
             res.json({success:false, error:err});
+        }else if(result == null){
+            res.statusCode = 404
+            res.json({success:false, error:"No data found"})
         } else {
             res.statusCode = 200;
             res.json({success:true,response: result});
