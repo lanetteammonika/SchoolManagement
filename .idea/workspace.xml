@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="646e3ba7-4ea3-41ca-a50f-bb9b01778e28" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/config/database.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/config/general.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/controller/attendance.controller.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/controller/file.controller.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/controller/news.controller.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/controller/notes.controller.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/controller/student.controller.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/controller/user.controller.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/controller/users.controller.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/index.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/middleware/verify_token.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/package.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540529431360.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540530888798.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540531377148.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540531678027.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540532306412.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540532362613.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540532372177.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540532443959.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540532931408.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540533069390.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540533136934.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540533199746.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540533213540.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540533226830.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540535875855.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540535900162.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540535935595.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540535951470.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540536085851.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540536087059.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540536092730.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540536108489.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540536120866.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540536123068.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540537889646.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540542279319.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540542300159.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540542325325.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540542350970.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540542395838.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540545023813.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540549589068.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540549595441.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/profilepic/profile_pic-1540550108797.png" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/routes/attendance.route.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/routes/file.route.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/routes/news.routes.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/routes/notes.route.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/routes/student.route.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/routes/user.routes.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/routes/users.routes.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/schema/attendance.schema.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/schema/file.schema.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/schema/news.schema.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/schema/notes.schema.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/schema/parent.schema.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/schema/student.schema.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/schema/user.schema.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/schema/users.schema.js" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="23" />
+    <option name="width" value="1600" />
+    <option name="height" value="824" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SchoolManagement" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SchoolManagement" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="646e3ba7-4ea3-41ca-a50f-bb9b01778e28" name="Default" comment="" />
+      <created>1540555814984</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1540555814984</updated>
+      <workItem from="1540555816196" duration="28000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="28000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1600" height="824" extended-state="6" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24952501" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+</project>
