@@ -19,44 +19,80 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
-
+//upload.single('profile_pic')
 route.post('/',upload.single('profile_pic'),(req,res)=>{
-    insert(req.body,req.file.filename,(err,result)=>{
-        if (err){
-            res.statusCode=400;
-            res.json({success:false, error:err});
-            console.log(err);
-        }
-        else if(result == null){
-            res.statusCode=404;
-            res.json({success:false, error:"NOT VALID"});
-            console.log("Not Valid");
-        }
-        else {
-            res.statusCode=200;
+    if(Boolean(req.file)){
+        insert(req.body,req.file.filename,(err,result)=>{
+            if (err){
+                res.statusCode=400;
+                res.json({success:false, error:err,status:400});
+                console.log(err);
+            }
+            else if(result == null){
+                res.statusCode=404;
+                res.json({success:false, error:"NOT VALID",status:404});
+                console.log("Not Valid");
+            }
+            else {
+                res.statusCode=200;
 
-            const JWTToken = jwt.sign({
-                    email: result.email,
-                    id: result.id,
-                    role:result.user_type
-                },
-                jwtConfig.secret,
-            );
+                const JWTToken = jwt.sign({
+                        email: result.email,
+                        id: result.id,
+                        role:result.user_type
+                    },
+                    jwtConfig.secret,
+                );
 
-            delete result.dataValues.password;
-            delete result.dataValues.id
-            delete result.dataValues.createdAt;
-            delete result.dataValues.updatedAt;
+                delete result.dataValues.password;
+                delete result.dataValues.id
+                delete result.dataValues.createdAt;
+                delete result.dataValues.updatedAt;
 
-            res.json({success:true,response:result.dataValues, token:JWTToken});
-        }
-    })
+                res.json({success:true,response:result.dataValues, token:JWTToken,status:200});
+            }
+        })
+    } else {
+        insert(req.body,'',(err,result)=>{
+            if (err){
+                res.statusCode=400;
+                res.json({success:false, error:err,status:400});
+                console.log(err);
+            }
+            else if(result == null){
+                res.statusCode=404;
+                res.json({success:false, error:"NOT VALID",status:404});
+                console.log("Not Valid");
+            }
+            else {
+                res.statusCode=200;
+
+                const JWTToken = jwt.sign({
+                        email: result.email,
+                        id: result.id,
+                        role:result.user_type
+                    },
+                    jwtConfig.secret,
+                );
+
+                delete result.dataValues.password;
+                delete result.dataValues.id
+                delete result.dataValues.createdAt;
+                delete result.dataValues.updatedAt;
+
+                res.json({success:true,response:result.dataValues, token:JWTToken,statusCode: res.statusCode=200});
+            }
+        })
+    }
+
+
+
 });
 
 route.post('/update', verifiedToken, upload.single('profile_pic'), (req, res) => {
     const id = req.decoded.id
     if(req.file){
-        req.body.profile_pic = req.file.fiename
+        req.body.profile_pic = req.file.filename
     }
     update(id, req.body, (err, result) => {
         if (err){
@@ -95,10 +131,10 @@ route.post('/loginUser', (req,res) => {
         postLogin(req.body.email, req.body.password, (err, user) => {
             if(err){
                 res.statusCode=400;
-                res.json({success: false, error:err});
+                res.json({success: false, error:err,status:400});
             }else if (!user) {
                 res.statusCode=404;
-                res.json({success: false, error: 'Invalid password'});
+                res.json({success: false, error: 'Invalid password',status:404});
             }else {
                 res.statusCode = 200;
 
@@ -113,12 +149,12 @@ route.post('/loginUser', (req,res) => {
                 delete user.dataValues.id
                 delete user.dataValues.createdAt;
                 delete user.dataValues.updatedAt;
-                res.json({success:true,response:user.dataValues, token:JWTToken});
+                res.json({success:true,response:user.dataValues, token:JWTToken,status:200});
             }
         })
     }else {
         res.statusCode=400;
-        res.json({success:false, error:"please enter password"});
+        res.json({success:false, error:"please enter credentials"});
     }
 })
 
