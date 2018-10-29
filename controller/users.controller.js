@@ -1,6 +1,7 @@
-const usersType=require('./../schema/users.schema');
+const users=require('./../schema/users.schema');
 const {db} = require('../config/database');
 var bcrypt = require('bcrypt');
+const {userAttributes} = require('../config/general')
 
 var validPassword = (password,hash) => {
     return bcrypt.compare(password, hash);
@@ -11,7 +12,7 @@ var generateHash = (password) => {
 }
 
 exports.insert =(body,path,done)=> {
-    usersType.find({
+    users.find({
         where: {
             email: body.email
         }
@@ -20,7 +21,7 @@ exports.insert =(body,path,done)=> {
             done("This email is already registered");
         }else {
             body.profile_pic=path;
-            usersType.create(body).then((d) => {
+            users.create(body).then((d) => {
                 done(null, d);
             }).catch((err) => {
                 done(err);
@@ -32,12 +33,12 @@ exports.insert =(body,path,done)=> {
 }
 
 exports.postLogin = (email, password, done) => {
-    usersType.find({where:{email:email}}).
+    users.find({where:{email:email}}).
     then(async (user) => {
         if(!user){
             done('Email is not registered')
         }else if(user.is_active == 0){
-            done('You are deleted by Admin')
+            done('You are either not verified or deleted by Admin')
         }else if(!await validPassword(password, user.password)){
             done(null, false)
         }else {
@@ -49,7 +50,7 @@ exports.postLogin = (email, password, done) => {
 }
 
 exports.getUserDetails = (id, done) => {
-    usersType.find({
+    users.find({
         where: {
             id: id,
             is_active: 1
@@ -65,10 +66,10 @@ exports.update = async (id, body, done) => {
     if(body.password){
         body.password = await generateHash(body.password)
     }
-    usersType.update(body, {where: {id: id, is_active:1}}).
+    users.update(body, {where: {id: id, is_active:1}}).
     then((updatedUser) => {
         if(updatedUser){
-            usersType.find({where: {
+            users.find({where: {
                 id: id
                 }
             }).then((user) => {
@@ -86,7 +87,7 @@ exports.update = async (id, body, done) => {
 }
 
 exports.remove = (id, done) => {
-    db.query("UPDATE tbl_usersTypes set is_active = 0 WHERE (parent_id = "+ id +" and is_active =1) or (id = "+ id +" and is_active = 1)").
+    db.query("UPDATE tbl_users set is_active = 0 WHERE (parent_id = "+ id +" and is_active = 1) or (id = "+ id +" and is_active = 1)").
     spread((data) => {
         done(null, data)
     }).catch((err) => {
@@ -104,11 +105,78 @@ exports.getUsers = (role, done) => {
         query = ("\"Teacher\"")
     }
 
-    db.query("SELECT first_name, last_name, user_type, mobile_no, email, profile_pic, DOB FROM `tbl_usersTypes` WHERE user_type in ("+ query +") and is_active = 1").
+    db.query("SELECT first_name, last_name, user_type, mobile_no, email, profile_pic, DOB FROM `tbl_users` WHERE user_type in ("+ query +") and is_active = 1").
     spread((seletedData) => {
         done(null, seletedData)
     }).
     catch((err) => {
+        done(err)
+    })
+}
+
+exports.getAllUsers = (done) => {
+    users.findAll({
+        where:{
+            $or: [
+                {
+                    user_type: {
+                        $eq: "Teacher"
+                    }
+                },
+                {
+                    user_type: {
+                        $eq: "Parent"
+                    }
+                },
+                {
+                    user_type: {
+                        $eq: "Student"
+                    }
+                }
+            ]
+        },
+        attributes: userAttributes
+    }).then((usersData) => {
+        done(null, usersData)
+    }).catch((err) => {
+        done(err)
+    })
+}
+
+exports.activateUser = (body, done) => {
+    let activated = 0
+
+    if(body.is_active == 0){
+        activated = 1
+    }else {
+        activated = 0
+    }
+
+    users.find({
+        where:{
+            id: body.id
+        }
+    }).then((user) => {
+        if(user){
+            user.updateAttributes({
+                is_active: activated
+            }).then((updatedUser) => {
+                users.find({
+                    where:{
+                        id: body.id
+                    }
+                }).then((userData) => {
+                    done(null, userData)
+                }).catch((err) => {
+                    done(err)
+                })
+            }).catch((err) => {
+                done(err)
+            })
+        }else {
+            done("No user available with this id")
+        }
+    }).catch((err) => {
         done(err)
     })
 }

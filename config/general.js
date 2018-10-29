@@ -1,3 +1,5 @@
+const nodeMailer = require('nodemailer');
+
 exports.jwtConfig = {
     secret : 'schoolManagement'
 }
@@ -10,9 +12,28 @@ exports.notesAttributes = [
 ]
 
 exports.userAttributes = [
+    'id',
     'first_name',
     'last_name',
-    'mobile_no',
     'email',
-    'profile_pic'
+    'is_active'
 ]
+
+exports.complaintAttributes = [
+    'id',
+    'user_id',
+    'complaint',
+    'is_active'
+]
+
+exports.transporter = nodeMailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'shivani.devtest12@gmail.com',
+        pass: 'lanetteam1'
+    }
+});
+
+exports.userEmailInfo = {
+    emailInfo: 'shivani.devtest12@gmail.com'
+}

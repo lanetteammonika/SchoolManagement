@@ -1,10 +1,11 @@
 const router=require('express');
 const route=router();
-const {insert, postLogin, getUserDetails, update, remove, getUsers} = require('../controller/users.controller');
+const {insert, postLogin, getUserDetails, update, remove, getUsers, getAllUsers, activateUser} = require('../controller/users.controller');
 const multer = require('multer');
-const {jwtConfig} = require('../config/general')
 const jwt = require('jsonwebtoken');
-const {verifiedToken, verifiedRestrictStudent} = require('../middleware/verify_token')
+const {verifiedToken, verifiedRestrictStudent, verifiedAdmin} = require('../middleware/verify_token')
+const nodeMailer = require('nodemailer');
+const {jwtConfig, transporter, userEmailInfo} = require('../config/general')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -84,9 +85,6 @@ route.post('/',upload.single('profile_pic'),(req,res)=>{
             }
         })
     }
-
-
-
 });
 
 route.post('/update', verifiedToken, upload.single('profile_pic'), (req, res) => {
@@ -210,6 +208,58 @@ route.get('/roleBasedUsers', verifiedRestrictStudent, (req, res) => {
         } else {
             res.statusCode = 200;
             res.json({success:true,response: result});
+        }
+    })
+})
+
+route.get('/getAllUsers', verifiedAdmin, (req, res) => {
+    getAllUsers((err, user) => {
+        if(err){
+            res.statusCode=400;
+            res.json({success:false, error:err});
+        }else if(user.length == 0){
+            res.statusCode = 404
+            res.json({success:false, error:"No data found"})
+        }else {
+            res.statusCode = 200;
+
+            res.json({success:true,response:user});
+        }
+    })
+})
+
+route.post('/activateUser',verifiedAdmin, (req, res) => {
+    let message = ''
+
+    if(req.body.is_active == 0){
+        message = "You are successfully activated by the admin"
+    }else {
+        message = "Admin deactivated your account"
+    }
+
+    activateUser(req.body, (err, result) => {
+        if(err){
+            res.statusCode=400;
+            res.json({success:false, error:err});
+        }else {
+
+            var mailOptions = {
+                from: userEmailInfo.emailInfo,
+                to: req.body.email,
+                subject: 'User active status',
+                text: message
+            };
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ===========\n' + info.response);
+                }
+            });
+
+            res.statusCode = 200;
+
+            res.json({success:true,response:"User active status changed successfully"});
         }
     })
 })

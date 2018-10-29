@@ -2,7 +2,7 @@ var Sequelize = require('sequelize');
 const {db} = require('../config/database');
 const bcrypt = require('bcrypt');
 
-const usersType=db.define('tbl_usersType',{
+const users=db.define('tbl_users',{
     id:{
         type:Sequelize.INTEGER,
         primaryKey:true,
@@ -41,7 +41,7 @@ const usersType=db.define('tbl_usersType',{
     },
     is_active:{
         type:Sequelize.INTEGER,
-        defaultValue:1
+        defaultValue: 0
     }
 },
     {
@@ -58,12 +58,12 @@ const usersType=db.define('tbl_usersType',{
         },
     });
 
-usersType.belongsTo(usersType,{foreignKey:'parent_id'})
+users.belongsTo(users,{foreignKey:'parent_id'})
 
-usersType.sync({force:false}).then((res)=>{
-    console.log("usersType table created");
+users.sync({force:false}).then((res)=>{
+    console.log("users table created");
 }).catch((err)=>{
     console.log(err);
 });
 
-module.exports = usersType;
+module.exports = users;
