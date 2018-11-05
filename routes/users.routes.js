@@ -171,17 +171,17 @@ route.get('/userDetail', verifiedToken, (req, res) => {
             res.json({success:false, error:"No data found"})
         }else {
             res.statusCode = 200;
-            delete user.dataValues.password;
+            /*delete user.dataValues.password;
             delete user.dataValues.id
             delete user.dataValues.createdAt;
-            delete user.dataValues.updatedAt;
+            delete user.dataValues.updatedAt;*/
             res.json({success:true,response:user.dataValues});
         }
     })
 })
 
-route.get('/deleteUser', verifiedToken, (req, res) => {
-    const id = req.decoded.id
+route.post('/deleteUser', verifiedAdmin, (req, res) => {
+    const id = req.body.id
     remove(id, (err, result) => {
         if(err){
             res.statusCode=400;
@@ -212,7 +212,7 @@ route.get('/roleBasedUsers', verifiedRestrictStudent, (req, res) => {
     })
 })
 
-route.get('/getAllUsers', verifiedAdmin, (req, res) => {
+route.get('/getAllUsers',  (req, res) => {
     getAllUsers((err, user) => {
         if(err){
             res.statusCode=400;

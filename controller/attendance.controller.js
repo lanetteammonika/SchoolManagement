@@ -6,14 +6,48 @@ const date = new Date()
 const todayDate = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()
 
 exports.insert = (body, done) => {
-    attendance.create(body).
-    then((newAttendenceRecord) => {
-        done(null, newAttendenceRecord)
-    }).
+    attendance.find({
+        where:{
+            $and: [
+                sequelize.where(sequelize.fn('date', sequelize.col('createdAt')), '=', todayDate),
+                { user_id: body.user_id }
+            ]
+        }
+    }).then((updateAttendence) => {
+        if(updateAttendence){
+            attendance.update(body, {
+                where:{
+                    user_id: body.user_id
+                }
+            }).then((updatedAttendence) => {
+                if(updatedAttendence){
+                    attendance.find({
+                        where: {
+                            user_id: body.user_id
+                        }
+                    }).then((attendenceData) => {
+                        done(null, attendenceData)
+                }).catch((err) => {
+                        done(err)
+                    })
+                }else {
+                    done("Problem updating attendence")
+        }
+        }).catch((err) => {
+                done(err)
+            })
+        }else {
+            attendance.create(body).
+        then((newAttendenceRecord) => {
+            done(null, newAttendenceRecord)
+}).
     catch((err) => {
         done(err)
     })
 }
+})
+}
+
 
 exports.update = (id, body, done) => {
     attendance.update(body, {where:{
@@ -42,7 +76,7 @@ exports.getTodayAttendence = (id,done) => {
     attendance.find({
         where:{
             $and: [
-                sequelize.where(sequelize.fn('date', sequelize.col('createdAt')), '<=', todayDate),
+                sequelize.where(sequelize.fn('date', sequelize.col('createdAt')), '=', todayDate),
                 { user_id: id }
             ]
         }

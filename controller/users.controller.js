@@ -146,11 +146,12 @@ exports.getAllUsers = (done) => {
 exports.activateUser = (body, done) => {
     let activated = 0
 
-    if(body.is_active == 0){
-        activated = 1
-    }else {
-        activated = 0
-    }
+    activated = body.is_active
+    // if(body.is_active == 0){
+    //     activated = 1
+    // }else {
+    //     activated = 0
+    // }
 
     users.find({
         where:{

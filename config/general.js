@@ -8,7 +8,9 @@ exports.notesAttributes = [
     'id',
     'title',
     'teacher_id',
-    'description'
+    'description',
+    'updatedAt',
+    'createdAt'
 ]
 
 exports.userAttributes = [
@@ -16,7 +18,9 @@ exports.userAttributes = [
     'first_name',
     'last_name',
     'email',
-    'is_active'
+    'is_active',
+    'user_type',
+    'parent_id',
 ]
 
 exports.complaintAttributes = [
